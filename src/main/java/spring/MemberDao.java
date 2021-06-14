@@ -1,7 +1,6 @@
 package spring;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MemberDao {
     private static long nextId = 0;
@@ -9,6 +8,14 @@ public class MemberDao {
 
     public Member selectByEmail(String email) {
         return map.get(email);
+    }
+
+    public Collection<Member> selectAll() {
+        ArrayList<Member> temp = new ArrayList<>();
+        for (String key : map.keySet()) {
+            temp.add(map.get(key));
+        }
+        return temp;
     }
 
     public void insert(Member member) {

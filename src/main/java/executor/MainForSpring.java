@@ -7,10 +7,8 @@ import exceptions.MemberNotFoundException;
 import exceptions.WrongIdPasswordException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import spring.ChangePasswordService;
-import spring.FindEmailService;
-import spring.MemberRegisterService;
-import spring.RegisterRequest;
+import spring.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,8 +33,9 @@ public class MainForSpring {
             } else if (command.startsWith("change ")) {
                 processChangeCommand(command.split(" "));
                 continue;
-            } else if (command.startsWith("find ")) {
-                findEmail(command.split(" "));
+            } else if (command.startsWith("list")) {
+                processListCommand();
+                continue;
             }
             printHelp();
         }
@@ -52,7 +51,7 @@ public class MainForSpring {
         MemberRegisterService regSvc = ctx.getBean("memberRegSvc", MemberRegisterService.class);
         RegisterRequest req = new RegisterRequest();
         req.setEmail(arg[1]);
-        req.setEmail(arg[2]);
+        req.setName(arg[2]);
         req.setPassword(arg[3]);
         req.setConfirmPassword(arg[4]);
 
@@ -93,12 +92,8 @@ public class MainForSpring {
         System.out.println();
     }
 
-    private static void findEmail(String[] command) {
-        FindEmailService fes = ctx.getBean("findEmailSvc", FindEmailService.class);
-        if (fes.findEmail(command[1])) {
-            System.out.println("이메일이 존재합니다.");
-        }
-        else
-            System.out.println("이메일이 존재하지 않습니다.(");
+    private static void processListCommand() {
+        MemberListPrinter listPrinter = ctx.getBean("listPrinter", MemberListPrinter.class);
+        listPrinter.printAll();
     }
 }

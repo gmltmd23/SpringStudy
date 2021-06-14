@@ -2,10 +2,7 @@ package config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import spring.ChangePasswordService;
-import spring.FindEmailService;
-import spring.MemberDao;
-import spring.MemberRegisterService;
+import spring.*;
 
 @Configuration
 public class AppCtx {
@@ -27,9 +24,12 @@ public class AppCtx {
     }
 
     @Bean
-    public FindEmailService findEmailSvc() {
-        FindEmailService fes = new FindEmailService();
-        fes.setMemberDao(memberDao());
-        return fes;
+    public MemberPrinter memberPrinter() {
+        return new MemberPrinter();
+    }
+
+    @Bean
+    public MemberListPrinter listPrinter() {
+        return new MemberListPrinter(memberDao(), memberPrinter());
     }
 }
