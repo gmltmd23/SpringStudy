@@ -39,6 +39,9 @@ public class MainForSpring {
             } else if (command.startsWith("info ")) {
                 processInfoCommand(command.split(" "));
                 continue;
+            } else if (command.equals("version")) {
+                processVersionCommand();
+                continue;
             }
             printHelp();
         }
@@ -107,5 +110,10 @@ public class MainForSpring {
         }
         MemberInfoPrinter infoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
         infoPrinter.printMemberInfo(arg[1]);
+    }
+
+    private static void processVersionCommand() {
+        VersionPrinter vp = ctx.getBean("versionPrinter", VersionPrinter.class);
+        vp.print();
     }
 }
