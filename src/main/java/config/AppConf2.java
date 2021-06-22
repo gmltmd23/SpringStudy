@@ -1,44 +1,38 @@
-/*
 package config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import spring.*;
 
 @Configuration
-public class AppCtx {
-    @Bean
-    public MemberDao memberDao() {
-        return new MemberDao();
-    }
+public class AppConf2 {
+    @Autowired
+    private MemberDao memberDao;
+    @Autowired
+    private MemberPrinter memberPrinter;
 
     @Bean
     public MemberRegisterService memberRegSvc() {
-        return new MemberRegisterService(memberDao());
+        return new MemberRegisterService(memberDao);
     }
 
     @Bean
     public ChangePasswordService changePwdSvc() {
         ChangePasswordService pwdSvc = new ChangePasswordService();
-        pwdSvc.setMemberDao(memberDao());
+        pwdSvc.setMemberDao(memberDao);
         return pwdSvc;
     }
 
     @Bean
-    public MemberPrinter memberPrinter() {
-        return new MemberPrinter();
-    }
-
-    @Bean
     public MemberListPrinter listPrinter() {
-        return new MemberListPrinter(memberDao(), memberPrinter());
+        return new MemberListPrinter(memberDao, memberPrinter);
     }
 
     @Bean
     public MemberInfoPrinter infoPrinter() {
         MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-        infoPrinter.setMemberDao(this.memberDao());
-        infoPrinter.setPrinter(this.memberPrinter());
+        // Autowired 되어서 Setter 생략
         return infoPrinter;
     }
 
@@ -50,5 +44,3 @@ public class AppCtx {
         return versionPrinter;
     }
 }
-
- */
