@@ -1,4 +1,4 @@
-/*
+
 package config;
 
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,6 @@ public class AppCtx {
     @Bean
     public ChangePasswordService changePwdSvc() {
         ChangePasswordService pwdSvc = new ChangePasswordService();
-        pwdSvc.setMemberDao(memberDao());
         return pwdSvc;
     }
 
@@ -37,8 +36,6 @@ public class AppCtx {
     @Bean
     public MemberInfoPrinter infoPrinter() {
         MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-        infoPrinter.setMemberDao(this.memberDao());
-        infoPrinter.setPrinter(this.memberPrinter());
         return infoPrinter;
     }
 
@@ -50,5 +47,3 @@ public class AppCtx {
         return versionPrinter;
     }
 }
-
- */

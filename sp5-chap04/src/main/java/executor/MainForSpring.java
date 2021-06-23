@@ -1,8 +1,7 @@
 package executor;
 // change
 import assembler.Assembler;
-import config.AppConf1;
-import config.AppConf2;
+import config.AppCtx;
 import exceptions.DuplicateMemberException;
 import exceptions.MemberNotFoundException;
 import exceptions.WrongIdPasswordException;
@@ -18,7 +17,7 @@ public class MainForSpring {
     private static ApplicationContext ctx = null;
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppConf1.class);
+        ctx = new AnnotationConfigApplicationContext(AppCtx.class);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while(true) {
