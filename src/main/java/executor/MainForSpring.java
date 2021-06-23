@@ -18,9 +18,7 @@ public class MainForSpring {
     private static ApplicationContext ctx = null;
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppConf1.class, AppConf2.class);
-        AppConf1 appConf1 = ctx.getBean(AppConf1.class);
-        System.out.println("결과 : " + (appConf1 != null) );
+        ctx = new AnnotationConfigApplicationContext(AppConf1.class);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while(true) {
