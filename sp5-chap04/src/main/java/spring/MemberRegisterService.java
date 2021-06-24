@@ -2,11 +2,13 @@ package spring;
 
 import exceptions.DuplicateMemberException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.time.LocalDateTime;
 
 public class MemberRegisterService {
     @Autowired
+    @Qualifier("dao")
     private MemberDao memberDao;
 
     public MemberRegisterService() { }

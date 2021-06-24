@@ -1,14 +1,28 @@
 
 package config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import spring.*;
 
 @Configuration
 public class AppCtx {
+    /*
     @Bean
     public MemberDao memberDao() {
+        return new MemberDao();
+    }
+     */
+
+    @Bean
+    @Qualifier("dao")
+    public MemberDao memberDao1() {
+        return new MemberDao();
+    }
+
+    @Bean
+    public MemberDao memberDao2() {
         return new MemberDao();
     }
 
