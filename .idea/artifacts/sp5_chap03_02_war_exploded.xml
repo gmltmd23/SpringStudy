@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="sp5-chap03_02:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/sp5_chap03_02_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="sp5-chap03_02" />
+        </element>
+      </element>
+      <element id="module-output" name="sp5-chap03" />
+    </root>
+  </artifact>
+</component>
