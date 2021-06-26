@@ -8,6 +8,7 @@ public class MemberInfoPrinter {
     @Qualifier("dao")
     private MemberDao memDao;
     @Autowired
+    @Qualifier("printer")
     private MemberPrinter printer;
 
     public void printMemberInfo(String email) {

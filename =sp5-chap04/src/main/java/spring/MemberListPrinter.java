@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class MemberListPrinter {
     private MemberDao memberDao;
-    private MemberPrinter memberPrinter;
+    private MemberSummaryPrinter memberPrinter;
 
     public MemberListPrinter() { }
 
@@ -18,7 +18,7 @@ public class MemberListPrinter {
     }
 
     @Autowired
-    public void setMemberPrinter(MemberPrinter memberPrinter) {
+    public void setMemberPrinter(MemberSummaryPrinter memberPrinter) {
         this.memberPrinter = memberPrinter;
     }
 
