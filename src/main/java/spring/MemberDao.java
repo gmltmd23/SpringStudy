@@ -1,7 +1,10 @@
 package spring;
 
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 
+@Component
 public class MemberDao {
     private static long nextId = 0;
     private Map<String, Member> map = new HashMap<String, Member>();
