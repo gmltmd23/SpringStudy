@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainForSpring {
-    private static ApplicationContext ctx = null;
+    private static AnnotationConfigApplicationContext ctx = null;
 
     public static void main(String[] args) throws IOException {
         ctx = new AnnotationConfigApplicationContext(AppCtx.class);
@@ -44,6 +44,10 @@ public class MainForSpring {
                 continue;
             }
             printHelp();
+        }
+
+        if (ctx != null) {
+            ctx.close();
         }
     }
 
