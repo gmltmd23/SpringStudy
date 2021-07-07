@@ -2,12 +2,10 @@ package executor;
 // change
 // dependency check
 import assembler.Assembler;
-import config.AppConf1;
-import config.AppConf2;
+import config.AppCtx;
 import exceptions.DuplicateMemberException;
 import exceptions.MemberNotFoundException;
 import exceptions.WrongIdPasswordException;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.*;
 
@@ -19,7 +17,7 @@ public class MainForSpring {
     private static AnnotationConfigApplicationContext ctx = null;
 
     public static void main(String[] args) throws IOException {
-        ctx = new AnnotationConfigApplicationContext(AppConf1.class);
+        ctx = new AnnotationConfigApplicationContext(AppCtx.class);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while(true) {
@@ -47,6 +45,7 @@ public class MainForSpring {
             }
             printHelp();
         }
+        ctx.close();
     }
 
     private static Assembler assembler = new Assembler();
