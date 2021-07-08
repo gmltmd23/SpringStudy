@@ -13,10 +13,10 @@ import java.util.Arrays;
 @Order(1)
 public class ExeTimeAspect {
     @Pointcut("execution(* chap07..*(..))")
-    private void publicTarget() {
+    public void publicTarget() {
     }
 
-    @Around("publicTarget()")
+    @Around("CommonPointcut.commonTarget()")
     public Object measure(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.nanoTime();
         try {
