@@ -15,7 +15,6 @@ public class ExeTimeAspect {
 
     @Around("publicTarget()")
     public Object measure(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("mesure 실행됬어요");
         long start = System.nanoTime();
         try {
             Object result = joinPoint.proceed();
