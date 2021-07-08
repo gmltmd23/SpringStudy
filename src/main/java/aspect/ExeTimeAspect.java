@@ -9,7 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import java.util.Arrays;
 @Aspect
 public class ExeTimeAspect {
-    @Pointcut("execution(public * chap07..*(..))")
+    @Pointcut("execution(* chap07..*(..))")
     private void publicTarget() {
     }
 
