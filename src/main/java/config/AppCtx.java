@@ -17,6 +17,9 @@ public class AppCtx {
         ds.setPassword("spring5");
         ds.setInitialSize(2);
         ds.setMaxActive(10);
+        ds.setTestWhileIdle(true); // 유휴 커넥션 검사 활성화
+        ds.setMinEvictableIdleTimeMillis(1000 * 60 * 3); // 최소 유휴시간 3분
+        ds.setTimeBetweenEvictionRunsMillis(1000 * 10); // 10초에 한번씩 검사
         return ds;
     }
 }
