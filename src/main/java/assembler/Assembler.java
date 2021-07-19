@@ -1,5 +1,6 @@
 package assembler;
 
+import org.apache.tomcat.jdbc.pool.DataSource;
 import spring.ChangePasswordService;
 import spring.MemberDao;
 import spring.MemberRegisterService;
@@ -10,7 +11,7 @@ public class Assembler {
     private ChangePasswordService pwdSvc;
 
     public Assembler() {
-        memberDao = new MemberDao();
+        memberDao = new MemberDao(new DataSource());
         regSvc = new MemberRegisterService(memberDao);
         pwdSvc = new ChangePasswordService();
         pwdSvc.setMemberDao(memberDao);

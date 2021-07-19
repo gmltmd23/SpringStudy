@@ -4,6 +4,7 @@ package config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.apache.tomcat.jdbc.pool.DataSource;
+import spring.MemberDao;
 
 @Configuration
 public class AppCtx {
@@ -21,5 +22,10 @@ public class AppCtx {
         ds.setMinEvictableIdleTimeMillis(1000 * 60 * 3); // 최소 유휴시간 3분
         ds.setTimeBetweenEvictionRunsMillis(1000 * 10); // 10초에 한번씩 검사
         return ds;
+    }
+
+    @Bean
+    public MemberDao memberDao() {
+        return new MemberDao(dataSource());
     }
 }

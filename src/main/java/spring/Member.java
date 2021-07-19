@@ -18,7 +18,7 @@ public class Member {
         this.registerDateTime = regDateTime;
     }
 
-    void setID(Long id) {
+    public void setID(Long id) {
         this.id = id;
     }
 
