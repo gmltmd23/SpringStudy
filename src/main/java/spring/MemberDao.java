@@ -28,11 +28,17 @@ public class MemberDao {
     }
 
     public void update(Member member) {
-
+        jdbcTemplate.update("updaet MEMBER set NAME = ?, PASSWORD = ? where EMAIL = ?", member.getName(), member.getPassword(), member.getEmail());
     }
 
     public Collection<Member> selectAll() {
         List<Member> results = jdbcTemplate.query("select * from MEMBER", new MemberRowMapper());
         return results.isEmpty() ? null : results;
+    }
+
+    public int count() {
+        Integer count = jdbcTemplate.queryForObject(
+                "select count(*) rom MEMBER", Integer.class);
+        return count;
     }
 }
