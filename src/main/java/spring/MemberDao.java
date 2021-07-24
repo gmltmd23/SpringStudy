@@ -3,14 +3,11 @@ package spring;
 
 import mapper.MemberRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.util.Collection;
 import java.util.List;
 
 public class MemberDao {
@@ -40,17 +37,17 @@ public class MemberDao {
     }
 
     public void update(Member member) {
-        jdbcTemplate.update("updaet MEMBER set NAME = ?, PASSWORD = ? where EMAIL = ?", member.getName(), member.getPassword(), member.getEmail());
+        jdbcTemplate.update("update MEMBER set NAME = ?, PASSWORD = ? where EMAIL = ?", member.getName(), member.getPassword(), member.getEmail());
     }
 
-    public Collection<Member> selectAll() {
+    public List<Member> selectAll() {
         List<Member> results = jdbcTemplate.query("select * from MEMBER", new MemberRowMapper());
         return results.isEmpty() ? null : results;
     }
 
     public int count() {
         Integer count = jdbcTemplate.queryForObject(
-                "select count(*) rom MEMBER", Integer.class);
+                "select count(*) from MEMBER", Integer.class);
         return count;
     }
 }

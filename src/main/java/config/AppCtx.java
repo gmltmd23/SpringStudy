@@ -12,12 +12,13 @@ public class AppCtx {
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DataSource ds = new DataSource();
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost/spring5fs?characterEncoding=utf8");
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ds.setUrl("jdbc:mysql://localhost/spring5fs?characterEncoding=utf8&serverTimezone=UTC");
         ds.setUsername("spring5");
         ds.setPassword("spring5");
         ds.setInitialSize(2);
         ds.setMaxActive(10);
+        ds.setMaxIdle(10);
         ds.setTestWhileIdle(true); // 유휴 커넥션 검사 활성화
         ds.setMinEvictableIdleTimeMillis(1000 * 60 * 3); // 최소 유휴시간 3분
         ds.setTimeBetweenEvictionRunsMillis(1000 * 10); // 10초에 한번씩 검사
