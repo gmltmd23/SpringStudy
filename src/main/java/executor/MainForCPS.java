@@ -20,6 +20,8 @@ public class MainForCPS {
             System.out.println("회원 데이터가 존재하지 않습니다.");
         } catch (WrongIdPasswordException e) {
             System.out.println("암호가 올바르지 않습니다.");
+        } finally {
+            ctx.close();
         }
     }
 }
