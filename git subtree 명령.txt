@@ -1,0 +1,17 @@
+깔끔하게 git clone https://github.com/gmltmd23/SpringStudy 해주고
+
+git remote -v 로 확인
+
+git remote add sp5-chap00 https://github.com/gmltmd23/sp5-chap00
+
+SpringStudy 디렉터리 들가고
+
+혹시모르니 rm -rf sp5-chap00 해주고
+
+git subtree add --prefix sp5-chap00[이게 child path] sp5-chap00[이게 remote name] master
+
+그 다음은
+
+git add .
+
+git push
